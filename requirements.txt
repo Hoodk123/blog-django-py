@@ -6,7 +6,7 @@ Django==4.2.16
 idna==2.6
 mod-wsgi==4.9.3
 Pillow==11.0.0
-psycopg2==2.8.6
+psycopg2-binary==2.9.10
 pytz==2024.2
 requests==2.22.0
 schedule==0.5.0
