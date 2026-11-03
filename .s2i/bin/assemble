@@ -14,7 +14,14 @@ fi
 
 pip install "setuptools<81"
 pip install powershift-cli[image]
-pip install powershift-cli[image]
+
+# The minimal builder image has no 'which' command, which powershift needs.
+# Create a small stand-in next to the powershift script.
+if ! command -v which >/dev/null 2>&1; then
+    POWERSHIFT_BIN_DIR=$(dirname "$(command -v powershift)")
+    printf '#!/bin/bash\ncommand -v "$@"\n' > "$POWERSHIFT_BIN_DIR/which"
+    chmod +x "$POWERSHIFT_BIN_DIR/which"
+fi
 
 # Run the build phase with support for action hooks.
 
