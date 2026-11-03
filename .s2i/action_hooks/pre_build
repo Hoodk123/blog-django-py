@@ -37,7 +37,7 @@ ls -lasR .
 
 # Ensure we are using the latest pip and wheel packages.
 
-pip install -U pip setuptools wheel
+pip install -U pip "setuptools<81" wheel
 
 # Restore the cache directory from an incremental build.
 
@@ -53,3 +53,5 @@ fi
 if [ -d /opt/app-root/src/.s2i/wheelhouse ]; then
     mkdir -p /opt/app-root/cache
 fi
+
+
